@@ -6,6 +6,8 @@ const phongSchema =new mongoose.Schema({
         ref: 'LoaiPhong'
     },
     tinhtrang : 'Number',
+    hinhanh:Array,
+    mota:'String',
 });
 const Phong = mongoose.model('Phong', phongSchema);
 module.exports = Phong;

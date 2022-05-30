@@ -1,6 +1,7 @@
 var LoaiPhong = require('../models/loaiphong.model');
 exports.getListLP = async function(req, res) {
-    let listLP =await LoaiPhong.find()
+    let listLP =await LoaiPhong.find();
+    console.log(listLP);
     res.render('./loaiphong/list', {listLP: listLP});
 };
 exports.getAddLP = function(req, res) {
@@ -23,6 +24,7 @@ exports.postAddLP = async function(req, res) {
     });
 
 };
+
 exports.getEditLP = async function(req, res) {
     let loaiphong = await LoaiPhong.findById(req.params.id).exec().catch(function (err) {
         console.log(err);
