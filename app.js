@@ -12,6 +12,7 @@ var loaiphongRouter = require('./routes/loaiphong');
 var phongRouter = require('./routes/phong');
 var thuephongRouter = require('./routes/thuephong');
 var diennuocRouter = require('./routes/diennuoc');
+var apiUserRouter = require('./routes/api.user');
 var app = express();
 
 // view engine setup
@@ -32,6 +33,7 @@ app.use('/loaiphong', loaiphongRouter);
 app.use('/phong', phongRouter);
 app.use('/thuephong', thuephongRouter);
 app.use('/diennuoc', diennuocRouter);
+app.use('/apiUser', apiUserRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
