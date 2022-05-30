@@ -12,7 +12,7 @@ var loaiphongRouter = require('./routes/loaiphong');
 var phongRouter = require('./routes/phong');
 var thuephongRouter = require('./routes/thuephong');
 var diennuocRouter = require('./routes/diennuoc');
-var apiUserRouter = require('./routes/api.user');
+var apiUserRouter = require('./routes/user.api');
 var app = express();
 
 // view engine setup
