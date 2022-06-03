@@ -5,7 +5,9 @@ const phongSchema =new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'LoaiPhong'
     },
+    tenphong: 'String',
     tinhtrang : 'Number',
+    giaphong : 'Number',
     hinhanh:Array,
     mota:'String',
 });

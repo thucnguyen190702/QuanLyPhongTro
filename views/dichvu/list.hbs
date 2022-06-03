@@ -6,7 +6,8 @@
             <th scope="col">Tên dịch vụ</th>
             <th scope="col">Giá dịch vụ</th>
             <th scope="col">Mô tả</th>
-
+            <th scope="col">Sửa</th>
+            <th scope="col">Xóa</th>
 
         </tr>
         </thead>
@@ -19,10 +20,10 @@
                 <td>{{this.motadichvu}}</td>
 
 
-                <td style="text-align: center;"><a class="btn btn-warning" style="text-decoration: none"
+                <td style=""><a class="btn btn-warning" style="text-decoration: none"
                                                    href="/dichvu/edit{{this._id}}">Sửa</a></td>
                 <!--                <td style="background-color: red;text-align: center;color: white"><a href="javascript:xoa()">Xóa</a></td>-->
-                <td style="text-align: center"><a class="btn btn-danger" style="text-decoration: none" href="/dichvu/delete{{this._id}}">Xóa</a></td>
+                <td style=""><a class="btn btn-danger" style="text-decoration: none" href="/dichvu/delete{{this._id}}">Xóa</a></td>
                 <!--                <td style="text-align: center"><a class="btn btn-primary"  style="text-decoration: none" href="/comics/addimage/{{this._id}}">Add</a></td>-->
 
             </tr>

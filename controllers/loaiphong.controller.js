@@ -9,8 +9,7 @@ exports.getAddLP = function(req, res) {
 };
 exports.postAddLP = async function(req, res) {
     const loaiphong = new LoaiPhong({
-        tenloaiphong: req.body.tenloaiphong,
-        giaphong: req.body.giaphong,
+        tenloaiphong: req.body.tenloaiphong
     });
     await loaiphong.save(function (err) {
         if (err) {
@@ -42,8 +41,7 @@ exports.postEditLP =  function(req, res) {
     };
     console.log(dieukien);
     let data = {
-        tenloaiphong: req.body.tenloaiphong,
-        giaphong: req.body.giaphong,
+        tenloaiphong: req.body.tenloaiphong
     };
     console.log(data);
     LoaiPhong.updateOne(dieukien, data, function (err) {
