@@ -1,16 +1,16 @@
 const mongoose = require('mongoose');
 mongoose.connect('mongodb+srv://thucnguyen1907:thucnguyen1907@cluster0.k8cgd.mongodb.net/quanlyphongtro');
 const thuePhongSchema = mongoose.Schema({
-    idphong: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Phong'
-    },
     idkhachhang: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'KhachHang'
     },
+    idphong: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Phong'
+    },
     giaphong: 'Number',
-    tiencoc: 'Number',
+    tiendatcoc: 'Number',
     ngaythue: 'Date',
     ngaytra: 'Date',
     tienthanhtoan: 'Number'

@@ -1,4 +1,11 @@
 var thuephongController = require('../controllers/thuephong.controller');
 var express = require('express');
 var router = express.Router();
+router.get('/list', thuephongController.getListTP);
+router.get('/add', thuephongController.getAddTP);
+router.post('/add', thuephongController.postAddTP);
+router.get('/edit:id', thuephongController.getEditTP);
+router.post('/edit:id', thuephongController.postEditTP);
+router.get('/delete:id', thuephongController.getDeleteTP);
+router.post('/delete:id', thuephongController.postDeleteTP);
 module.exports = router;
