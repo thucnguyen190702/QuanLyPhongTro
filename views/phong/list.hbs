@@ -23,19 +23,19 @@
                 <td>{{this.mota}}</td>
 
                 <td ><a class="btn btn-success" style="text-decoration: none"
-                                                   href="/phong/addimage{{this._id}}">Thêm ảnh</a></td>
+                                                   href="/phong/image/{{this._id}}">Thêm ảnh</a></td>
                 <td ><a class="btn btn-warning" style="text-decoration: none"
-                                                   href="/phong/edit{{this._id}}">Sửa</a></td>
+                                                   href="/phong/edit/{{this._id}}">Sửa</a></td>
                 <!--                <td style="background-color: red;text-align: center;color: white"><a href="javascript:xoa()">Xóa</a></td>-->
                 <td ><a class="btn btn-danger" style="text-decoration: none"
-                                                  href="/phong/delete{{this._id}}">Xóa</a></td>
+                                                  href="/phong/delete/{{this._id}}">Xóa</a></td>
                 <!--                <td style="text-align: center"><a class="btn btn-primary"  style="text-decoration: none" href="/comics/addimage/{{this._id}}">Add</a></td>-->
 
             </tr>
         {{else}}
             <tr>
                 <td colspan="5">Bạn chưa có loại phòng nào--
-                    <a href="/loaiphong/add">thêm loại phòng</a>
+                    <a href="/phong/add">thêm loại phòng</a>
                 </td>
 
             </tr>

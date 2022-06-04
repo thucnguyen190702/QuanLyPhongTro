@@ -10,8 +10,6 @@ exports.getListPhong = async (req, res, next) => {
     });
 }
 exports.getListLP = async function (req, res) {
-
-
     res.render('./phong/add');
 };
 exports.getAddPhong = async (req, res, next) => {
@@ -40,8 +38,8 @@ exports.postAddPhong = async (req, res, next) => {
     });
     res.redirect('/phong/list');
 }
-exports.getAddPhoto = async (req, res, next) => {
-    res.render('./phong/addimage');
+exports.getPhoto = async (req, res, next) => {
+    res.render('phong/image');
 }
 exports.postAddPhoto = async (req, res, next) => {
     function removeVietnameseTones(str) {
@@ -67,17 +65,17 @@ exports.postAddPhoto = async (req, res, next) => {
     }
 
     let condition = {_id: req.params.id};
-    const phongs = await ComicModel.findById(req.params.id).exec()
-        .catch(err => {
+    const phongs = await PhongModel.findById(req.params.id).exec().catch(err => {
             console.log(err);
         });
+    console.log(phongs);
     if (phongs == null) {
-        return log("Comics not found");
+        return log("Phong not found");
     }
     console.log(req.files);
     const imageDirPath = resolve(__dirname, '../tmp');
     const files = fs.readdirSync(imageDirPath);
-    const nameFolder = comics.name.replace(" ", '-');
+    const nameFolder = phongs.tenphong.replace("",'-');
     let newNameDir = removeVietnameseTones(nameFolder);
     var dir = './public/uploads/' + newNameDir;
     if (!fs.existsSync(dir)) {
@@ -101,13 +99,13 @@ exports.postAddPhoto = async (req, res, next) => {
     });
     const files_info = req.files;
     nameImages = files_info.map((file, index) => "/uploads/" + newNameDir + '/' + date + "hinhanh" + index + ".png");
-    req.session.listimg = nameImages;
+    // req.session.listing = nameImages;
     let phongObj = {
         idloaiphong: phongs.idloaiphong,
         tenphong:phongs.tenphong,
         tinhtrang:phongs.tinhtrang,
         giaphong: phongs.giaphong,
-        imagecontent: nameImages,
+        hinhanh: nameImages,
         mota: phongs.mota,
     }
     PhongModel.updateOne(condition, phongObj, function (err, result) {
@@ -120,4 +118,7 @@ exports.postAddPhoto = async (req, res, next) => {
 
     return res.redirect('/phong/list');
 
+}
+exports.getDeletePhong = async (req, res, next) => {
+    res.render('./phong/delete');
 }

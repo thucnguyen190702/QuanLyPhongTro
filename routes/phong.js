@@ -5,8 +5,8 @@ var router = express.Router();
 router.get('/list', phongController.getListPhong);
 router.get('/add', phongController.getAddPhong);
 router.post('/add', phongController.postAddPhong);
-
+router.get('delete:id', phongController.getDeletePhong);
 var multerupload = multer({dest: './tmp/'});
-router.get('/addimage/:id', phongController.getAddPhoto);
-router.post('/addimage/:id', multerupload.array('hinhanh', 10),phongController.postAddPhoto);
+router.get('/image/:id', phongController.getPhoto);
+router.post('/image/:id', multerupload.array('hinhanh', 10),phongController.postAddPhoto);
 module.exports = router;
