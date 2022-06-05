@@ -2,7 +2,7 @@ var Admin = require('../models/admin.model');
 var bcrypt = require('bcrypt');
 
 exports.getLogin = (req, res, next) => {
-    res.render('./admin/login',{currentAdmin: req.session.username});
+    res.render('./admin/login',{currentAdmin: req.session.username,title: 'Đăng nhập'});
 }
 exports.getPostLogin = async (req, res, next) => {
     console.log(req.body);
@@ -25,7 +25,7 @@ exports.getPostLogin = async (req, res, next) => {
     res.render('./admin/login');
 }
 exports.getRegister = (req, res, next) => {
-    res.render('./admin/register');
+    res.render('./admin/register',{title: 'Đăng kí'});
 }
 exports.postRegister = async (req, res, next) => {
     console.log(req.body);
