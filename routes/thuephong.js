@@ -1,7 +1,7 @@
 var thuephongController = require('../controllers/thuephong.controller');
 var express = require('express');
 var router = express.Router();
-var authMiddleware = require('../middleware/auth.midddleware');
+const authMiddleware = require('../middleware/auth.midddleware');
 router.get('/list',authMiddleware.LoginRequire, thuephongController.getListTP);
 router.get('/add',authMiddleware.LoginRequire, thuephongController.getAddTP);
 router.post('/add',authMiddleware.LoginRequire, thuephongController.postAddTP);

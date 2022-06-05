@@ -1,7 +1,7 @@
 var diennuocController = require('../controllers/diennuoc.controller');
 var express = require('express');
 var router = express.Router();
-var diennuocMiddleware = require('../middleware/auth.midddleware');
+const diennuocMiddleware = require('../middleware/auth.midddleware');
 router.get('/list',diennuocMiddleware.LoginRequire, diennuocController.getListDN);
 router.get('/add',diennuocMiddleware.LoginRequire, diennuocController.getAddDN);
 router.post('/add',diennuocMiddleware.LoginRequire, diennuocController.postAddDN);

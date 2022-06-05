@@ -1,7 +1,7 @@
 var khachhangController = require('../controllers/khachhang.controller');
 var express = require('express');
 var router = express.Router();
-var authMiddleware = require('../middleware/auth.midddleware');
+const authMiddleware = require('../middleware/auth.midddleware');
 router.get('/list',authMiddleware.LoginRequire, khachhangController.getListKH);
 router.get('/add',authMiddleware.LoginRequire, khachhangController.getAddKH);
 router.post('/add',authMiddleware.LoginRequire, khachhangController.postAddKH);

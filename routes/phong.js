@@ -3,7 +3,7 @@ var express = require('express');
 var multer = require('multer');
 const authMiddleware = require("../middleware/auth.midddleware");
 var router = express.Router();
-var authMiddleware = require('../middleware/auth.midddleware');
+
 router.get('/list',authMiddleware.LoginRequire, phongController.getListPhong);
 router.get('/add',authMiddleware.LoginRequire, phongController.getAddPhong);
 router.post('/add',authMiddleware.LoginRequire, phongController.postAddPhong);
