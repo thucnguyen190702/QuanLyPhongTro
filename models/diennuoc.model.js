@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 mongoose.connect('mongodb+srv://thucnguyen1907:thucnguyen1907@cluster0.k8cgd.mongodb.net/quanlyphongtro');
 const dienNuocSchema = new mongoose.Schema({
-    idthuephong: {
+    idphong: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'ThuePhong'
+        ref: 'Phong'
     },
     iddichvu: {
         type: mongoose.Schema.Types.ObjectId,
@@ -15,8 +15,9 @@ const dienNuocSchema = new mongoose.Schema({
     chisodienmoi: 'Number',
     chisonuoccu: 'Number',
     chisonuocmoi: 'Number',
-    dongia: 'String',
-    dathanhtoan: 'String',
+    dongiadien: 'String',
+    dongianuoc: 'String',
+    dathanhtoan: 'Number',
 });
 const DienNuoc = mongoose.model('DienNuoc', dienNuocSchema);
 module.exports = DienNuoc;

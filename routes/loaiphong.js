@@ -7,4 +7,6 @@ router.get('/add', loaiphongController.getAddLP);
 router.post('/add', loaiphongController.postAddLP);
 router.get('/edit:id', loaiphongController.getEditLP);
 router.post('/edit:id', loaiphongController.postEditLP);
+router.get('/delete:id', loaiphongController.getDeleteLP);
+router.post('/delete:id', loaiphongController.postDeleteLP);
 module.exports = router;

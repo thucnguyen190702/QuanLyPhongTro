@@ -6,4 +6,6 @@ router.get('/add', DichvuController.getAddDV);
 router.post('/add', DichvuController.postAddDV);
 router.get('/edit:id', DichvuController.getEditDV);
 router.post('/edit:id', DichvuController.postEditDV);
+router.get('/delete:id', DichvuController.getDeleteDV);
+router.post('/delete:id', DichvuController.postDeleteDV);
 module.exports = router;

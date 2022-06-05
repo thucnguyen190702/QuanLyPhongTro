@@ -1,4 +1,11 @@
 var diennuocController = require('../controllers/diennuoc.controller');
 var express = require('express');
 var router = express.Router();
+router.get('/list', diennuocController.getListDN);
+router.get('/add', diennuocController.getAddDN);
+router.post('/add', diennuocController.postAddDN);
+router.get('/edit:id', diennuocController.getEditDN);
+router.post('/edit:id', diennuocController.postEditDN);
+router.get('/delete:id', diennuocController.getDeleteDN);
+router.post('/delete:id', diennuocController.postDeleteDN);
 module.exports = router;

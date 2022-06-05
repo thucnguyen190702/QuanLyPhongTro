@@ -17,7 +17,7 @@ exports.getAddTP = async (req, res, next) => {
 }
 exports.postAddTP = async (req, res, next) => {
     console.log(req.body);
-    let objPhong = new ThuePhong({
+    let objThuePhong = new ThuePhong({
         idphong: req.body.idphong,
         idkhachhang: req.body.idkhachhang,
         giaphong: req.body.giaphong,
@@ -26,7 +26,7 @@ exports.postAddTP = async (req, res, next) => {
         ngaytra: req.body.ngaytra,
         tienthanhtoan: req.body.tienthanhtoan
     });
-    await objPhong.save(function (err) {
+    await objThuePhong.save(function (err) {
         if (err) {
             console.log(err);
             return;
@@ -42,9 +42,8 @@ exports.getEditTP = async (req, res, next) => {
     });
     if (thuephong == null) {
         res.send('Khong tim thay thue phong');
-    } else {
-        res.render('./thuephong/edit', {thuephong: thuephong});
     }
+    res.render('./thuephong/edit', {thuephong: thuephong});
 }
 exports.postEditTP = function (req, res) {
     let dieukien = {
@@ -71,15 +70,14 @@ exports.postEditTP = function (req, res) {
     res.redirect('/thuephong/list');
 }
 exports.getDeleteTP = async (req, res, next) => {
-    let id = req.params.id;
-    let thuephong = await ThuePhong.findById(id).exec().catch(function (err) {
+
+    let thuephong = await ThuePhong.findById(req.params.id).exec().catch(function (err) {
         console.log(err);
     });
     if (thuephong == null) {
         res.send('Khong tim thay thue phong');
-    } else {
-        res.render('./thuephong/delete', {thuephong: thuephong});
     }
+    res.render('./thuephong/delete', {thuephong: thuephong});
 }
 exports.postDeleteTP = async (req, res, next) => {
     let dieukien = {

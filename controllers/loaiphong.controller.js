@@ -1,4 +1,5 @@
 var LoaiPhong = require('../models/loaiphong.model');
+const KhachHang = require("../models/khachhang.model");
 exports.getListLP = async function(req, res) {
     let listLP =await LoaiPhong.find();
     console.log(listLP);
@@ -53,18 +54,15 @@ exports.postEditLP =  function(req, res) {
     console.log('Sua thanh cong');
     res.redirect('/loaiphong/list');
 };
-exports.getDeleteLP = async function(req, res) {
-    let id = req.params.id;
-    let loaiphong = await LoaiPhong.findById(id).exec().catch(function (err) {
+exports.getDeleteLP = async (req, res, next) => {
+    let loaiphongs = await LoaiPhong.findById(req.params.id).exec().catch(function (err) {
         console.log(err);
     });
-    if (loaiphong ==null) {
-        res.send('Khong tim thay loai phong');
+    if (loaiphongs==null) {
+        res.send('Không tìm thấy khách hàng');
     }
-    else {
-        res.render('./loaiphong/delete', {loaiphong: loaiphong});
-    }
-};
+    res.render('./loaiphong/delete', {loaiphongs: loaiphongs});
+}
 exports.postDeleteLP = async function(req, res) {
     let dieukien = {
         _id: req.body.id

@@ -24,8 +24,7 @@ exports.postAddPhong = async (req, res, next) => {
         idloaiphong: req.body.idloaiphong,
         tenphong: req.body.tenphong,
         tinhtrang: req.body.tinhtrang,
-        giaphong: req.body.giaphong,
-        // hinhanh: req.body.hinhanh,
+        giaphong: req.body.giaphong, // hinhanh: req.body.hinhanh,
         mota: req.body.mota,
     });
     console.log(phong);
@@ -66,8 +65,8 @@ exports.postAddPhoto = async (req, res, next) => {
 
     let condition = {_id: req.params.id};
     const phongs = await PhongModel.findById(req.params.id).exec().catch(err => {
-            console.log(err);
-        });
+        console.log(err);
+    });
     console.log(phongs);
     if (phongs == null) {
         return log("Phong not found");
@@ -75,7 +74,7 @@ exports.postAddPhoto = async (req, res, next) => {
     console.log(req.files);
     const imageDirPath = resolve(__dirname, '../tmp');
     const files = fs.readdirSync(imageDirPath);
-    const nameFolder = phongs.tenphong.replace("",'-');
+    const nameFolder = phongs.tenphong.replace("", '-');
     let newNameDir = removeVietnameseTones(nameFolder);
     var dir = './public/uploads/' + newNameDir;
     if (!fs.existsSync(dir)) {
@@ -87,23 +86,19 @@ exports.postAddPhoto = async (req, res, next) => {
     let nameImages = [];
     let date = Date.now();
     await files.forEach((file, index) => {
-        fs.renameSync(
-            imageDirPath + `/${file}`,
-            './public/uploads/' + newNameDir + '/' + date + "hinhanh" + index + ".png",
-            function (err) {
-                if (err) {
-                    console.log(err);
-                }
+        fs.renameSync(imageDirPath + `/${file}`, './public/uploads/' + newNameDir + '/' + date + "hinhanh" + index + ".png", function (err) {
+            if (err) {
+                console.log(err);
             }
-        )
+        })
     });
     const files_info = req.files;
     nameImages = files_info.map((file, index) => "/uploads/" + newNameDir + '/' + date + "hinhanh" + index + ".png");
     // req.session.listing = nameImages;
     let phongObj = {
         idloaiphong: phongs.idloaiphong,
-        tenphong:phongs.tenphong,
-        tinhtrang:phongs.tinhtrang,
+        tenphong: phongs.tenphong,
+        tinhtrang: phongs.tinhtrang,
         giaphong: phongs.giaphong,
         hinhanh: nameImages,
         mota: phongs.mota,
@@ -119,6 +114,52 @@ exports.postAddPhoto = async (req, res, next) => {
     return res.redirect('/phong/list');
 
 }
+exports.getEdit = async (req, res, next) => {
+    const phong = await PhongModel.findById(req.params.id).exec().catch(err => {
+        console.log(err);
+    });
+    if (phong == null) {
+        return log("Phong not found");
+    }
+    res.render('phong/edit', {phong: phong});
+}
+exports.postEdit = (req, res, next) => {
+    let dieukien = {_id: req.params.id};
+    let phongObj = {
+        idloaiphong: req.body.idloaiphong,
+        tenphong: req.body.tenphong,
+        tinhtrang: req.body.tinhtrang,
+        giaphong: req.body.giaphong, // hinhanh: req.body.hinhanh,
+        mota: req.body.mota,
+    }
+    PhongModel.updateOne(dieukien, phongObj, function (err, result) {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log("Thanh cong");
+        }
+    })
+    res.redirect('/phong/list');
+}
 exports.getDeletePhong = async (req, res, next) => {
-    res.render('./phong/delete');
+    let phongs = await PhongModel.findById(req.params.id).exec().catch(err => {
+        console.log(err);
+    });
+    console.log(phongs);
+    if (phongs == null) {
+        res.send('Khong tim thay ban ghi');
+    }
+
+    res.render('./phong/delete',{phongs: phongs});
+}
+exports.postDeletePhong = async (req, res, next) => {
+let dieukien = {_id: req.params.id};
+    PhongModel.deleteOne(dieukien, function (err, result) {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log("Thanh cong");
+        }
+    })
+    res.redirect('/phong/list');
 }
