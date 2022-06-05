@@ -1,7 +1,7 @@
 <div>
     <table class="table table-responsive table-striped table-hover" style="margin-top: 20px">
         <thead>
-        <tr >
+        <tr>
             <th scope="col">ID</th>
             <th scope="col">Phòng Thuê</th>
             <th scope="col">Tên dịch vụ</th>
@@ -33,15 +33,17 @@
                 <td>{{this.chisonuocmoi}}</td>
                 <td>{{this.dongiadien}}</td>
                 <td>{{this.dongianuoc}}</td>
-                <td>{{this.dathanhtoan}}</td>
+                <td id="thanhtoan">{{this.dathanhtoan}}</td>
 
 
-                <td><a class="btn btn-warning" style="text-decoration: none" href="/diennuoc/edit{{this._id}}">Sửa</a></td>
-                <td><a class="btn btn-danger" style="text-decoration: none" href="/diennuoc/delete{{this._id}}">Xóa</a></td>
+                <td><a class="btn btn-warning" style="text-decoration: none" href="/diennuoc/edit{{this._id}}">Sửa</a>
+                </td>
+                <td><a class="btn btn-danger" style="text-decoration: none" href="/diennuoc/delete{{this._id}}">Xóa</a>
+                </td>
 
 
             </tr>
-                {{else}}
+        {{else}}
             <tr>
                 <td colspan="5">Bạn chưa có điện nước--
                     <a href="/diennuoc/add">thêm điện nước</a>
@@ -52,9 +54,17 @@
         </tbody>
     </table>
 </div>
-<!--<script>-->
-<!--    let a={{this.content}};-->
-<!--    let result=String.subString(1,70)+"....";-->
-
-<!--    document.getElementById("text-content").InnerHTML=result;-->
-<!--</script>-->
+<script>
+    let a = document.getElementById('thanhtoan');
+    if (a == "1") {
+        a.innerHTML = "Đã thanh toán";
+    } else if (a == "2") {
+        a.innerHTML = "Chưa thanh toán";
+    }
+    <!--var thanhtoan = {{listDN.dathanhtoan}};-->
+    <!--if(trangthais=="1"){-->
+    <!--    document.getElementById('thanhtoan').selected = true;-->
+    <!--}else if(trangthais=="Chưa thanh toán")  {-->
+    <!--    document.getElementById('thanhtoan').selected = true;-->
+    <!--}-->
+</script>

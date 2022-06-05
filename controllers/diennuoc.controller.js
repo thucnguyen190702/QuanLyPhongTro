@@ -37,6 +37,7 @@ exports.getEditDN = async function (req, res) {
     let diennuoc = await DienNuoc.findById(req.params.id).exec().catch(err => {
         console.log(err);
     });
+    console.log(diennuoc);
     if (diennuoc==null) {
         res.send('Không tìm thấy dịch vụ');
     }
