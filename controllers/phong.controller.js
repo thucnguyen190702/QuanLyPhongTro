@@ -10,13 +10,13 @@ exports.getListPhong = async (req, res, next) => {
     });
 }
 exports.getListLP = async function (req, res) {
-    res.render('./phong/add');
+    res.render('./phong/add',);
 };
 exports.getAddPhong = async (req, res, next) => {
     let listLP = await LoaiPhong.find();
     console.log(listLP);
 
-    res.render('./phong/add', {listLP: listLP});
+    res.render('./phong/add', {listLP: listLP,title: 'Thêm phòng'});
 }
 
 exports.postAddPhong = async (req, res, next) => {
@@ -121,7 +121,7 @@ exports.getEdit = async (req, res, next) => {
     if (phong == null) {
         return log("Phong not found");
     }
-    res.render('phong/edit', {phong: phong});
+    res.render('phong/edit', {phong: phong,title: 'Sửa Phong'});
 }
 exports.postEdit = (req, res, next) => {
     let dieukien = {_id: req.params.id};
@@ -150,7 +150,7 @@ exports.getDeletePhong = async (req, res, next) => {
         res.send('Khong tim thay ban ghi');
     }
 
-    res.render('./phong/delete',{phongs: phongs});
+    res.render('./phong/delete',{phongs: phongs,title: 'Xóa Phong'});
 }
 exports.postDeletePhong = async (req, res, next) => {
 let dieukien = {_id: req.params.id};

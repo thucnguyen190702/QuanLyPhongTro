@@ -5,7 +5,7 @@ exports.getListDV = async function (req, res) {
     res.render('./dichvu/list', {listDV: listDV});
 };
 exports.getAddDV = function (req, res) {
-    res.render('./dichvu/add');
+    res.render('./dichvu/add',{title:'Thêm dịch vụ'});
 };
 exports.postAddDV = async function (req, res) {
 
@@ -30,7 +30,7 @@ exports.getEditDV = async function (req, res) {
     if (dichvu==null) {
         res.send('Khoong tim thay dich vu');
     }
-    res.render('./dichvu/edit', {dichvu: dichvu});
+    res.render('./dichvu/edit', {dichvu: dichvu, title: 'Sửa dịch vụ'});
 };
 exports.postEditDV =  function (req, res) {
     const data = {
@@ -59,7 +59,7 @@ exports.getDeleteDV = async function (req, res) {
     if (dichvu==null) {
         res.send('Không tìm thấy dịch vụ');
     }
-    res.render('./dichvu/delete', {dichvu: dichvu});
+    res.render('./dichvu/delete', {dichvu: dichvu, title: 'Xóa dịch vụ'});
 };
 exports.postDeleteDV = async function (req, res) {
     const dieukien = {

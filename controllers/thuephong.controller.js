@@ -13,7 +13,7 @@ exports.getAddTP = async (req, res, next) => {
     let listKhachHang = await KhachHang.find();
     console.log('a' + listPhong);
     console.log('b' + listKhachHang);
-    res.render('./thuephong/add', {listPhong: listPhong, listKhachHang: listKhachHang});
+    res.render('./thuephong/add', {listPhong: listPhong, listKhachHang: listKhachHang,title:'Thêm thuê phòng'});
 }
 exports.postAddTP = async (req, res, next) => {
     console.log(req.body);
@@ -43,7 +43,7 @@ exports.getEditTP = async (req, res, next) => {
     if (thuephong == null) {
         res.send('Khong tim thay thue phong');
     }
-    res.render('./thuephong/edit', {thuephong: thuephong});
+    res.render('./thuephong/edit', {thuephong: thuephong,title:'Sửa thuê phòng'});
 }
 exports.postEditTP = function (req, res) {
     let dieukien = {
@@ -77,7 +77,7 @@ exports.getDeleteTP = async (req, res, next) => {
     if (thuephong == null) {
         res.send('Khong tim thay thue phong');
     }
-    res.render('./thuephong/delete', {thuephong: thuephong});
+    res.render('./thuephong/delete', {thuephong: thuephong,title:'Xóa thuê phòng'});
 }
 exports.postDeleteTP = async (req, res, next) => {
     let dieukien = {

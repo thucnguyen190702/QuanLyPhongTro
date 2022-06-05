@@ -6,7 +6,7 @@ exports.getListLP = async function(req, res) {
     res.render('./loaiphong/list', {listLP: listLP});
 };
 exports.getAddLP = function(req, res) {
-    res.render('./loaiphong/add');
+    res.render('./loaiphong/add',{title: 'Thêm loại phòng'});
 };
 exports.postAddLP = async function(req, res) {
     const loaiphong = new LoaiPhong({
@@ -33,7 +33,7 @@ exports.getEditLP = async function(req, res) {
        res.send('Khong tim thay loai phong');
    }
    else {
-       res.render('./loaiphong/edit', {loaiphong: loaiphong});
+       res.render('./loaiphong/edit', {loaiphong: loaiphong, title: 'Sửa loại phòng'});
    }
 };
 exports.postEditLP =  function(req, res) {
@@ -61,7 +61,7 @@ exports.getDeleteLP = async (req, res, next) => {
     if (loaiphongs==null) {
         res.send('Không tìm thấy khách hàng');
     }
-    res.render('./loaiphong/delete', {loaiphongs: loaiphongs});
+    res.render('./loaiphong/delete', {loaiphongs: loaiphongs, title: 'Xóa loại phòng'});
 }
 exports.postDeleteLP = async function(req, res) {
     let dieukien = {

@@ -6,7 +6,7 @@ exports.getListKH = async (req, res, next) => {
     res.render('./khachhang/list', {listKH: listKH,title: 'Danh sách khách hàng'});
 }
 exports.getAddKH = (req, res, next) => {
-    res.render('./khachhang/add');
+    res.render('./khachhang/add', {title: 'Thêm khách hàng'});
 }
 exports.postAddKH = async (req, res, next) => {
     let khachhang = new KhachHang({
@@ -36,7 +36,7 @@ exports.getEditKH = async (req, res, next) => {
     if (khachhang==null) {
         res.send('Không tìm thấy khách hàng');
     }
-    res.render('./khachhang/edit', {khachhang: khachhang});
+    res.render('./khachhang/edit', {khachhang: khachhang,title: 'Sửa khách hàng'});
 }
 exports.postEditKH = (req, res, next) => {
     let dieukien = {
@@ -70,7 +70,7 @@ exports.getDeleteKH = async (req, res, next) => {
     if (khachhang==null) {
         res.send('Không tìm thấy khách hàng');
     }
-    res.render('./khachhang/delete', {khachhang: khachhang});
+    res.render('./khachhang/delete', {khachhang: khachhang,title: 'Xóa khách hàng'});
 }
 exports.postDeleteKH = async (req, res, next) => {
     let dieukien = {

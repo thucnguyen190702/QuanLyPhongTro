@@ -8,7 +8,7 @@ exports.getListDN = async function (req, res) {
 exports.getAddDN = async function (req, res) {
     let listDV = await DichVu.find();
     let listPhong = await Phong.find();
-    res.render('./diennuoc/add',{listPhong: listPhong,listDV: listDV, });
+    res.render('./diennuoc/add',{listPhong: listPhong,listDV: listDV,title: 'Thêm điên nước'});
 }
 exports.postAddDN = async function (req, res) {
     const diennuoc = new DienNuoc({
@@ -41,7 +41,7 @@ exports.getEditDN = async function (req, res) {
     if (diennuoc==null) {
         res.send('Không tìm thấy dịch vụ');
     }
-    res.render('./diennuoc/edit', {diennuoc: diennuoc});
+    res.render('./diennuoc/edit', {diennuoc: diennuoc,title: 'Sửa điện nước'});
 }
 exports.postEditDN =  function (req, res) {
     const data = {
@@ -78,7 +78,7 @@ exports.getDeleteDN = async function (req, res) {
     if (diennuoc == null) {
         res.send('Không tìm thấy dịch vụ');
     }
-    res.render('./diennuoc/delete', {diennuoc: diennuoc});
+    res.render('./diennuoc/delete', {diennuoc: diennuoc,title: 'Xóa điện nước'});
 }
 exports.postDeleteDN = function (req, res) {
     const dieukien = {
