@@ -6,7 +6,7 @@ const phongSchema =new mongoose.Schema({
         ref: 'LoaiPhong'
     },
     tenphong: 'String',
-    tinhtrang : 'Number',
+    tinhtrang : 'String',
     giaphong : 'Number',
     hinhanh:Array,
     mota:'String',

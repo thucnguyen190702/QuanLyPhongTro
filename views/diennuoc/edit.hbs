@@ -87,3 +87,13 @@
         </div>
     </div>
 </section>
+<script>
+    var thanhtoan = "{{diennuoc.dathanhtoan}}";
+    var dathanhtoan = document.getElementById("dathanhtoan");
+    var chuathanhtoan = document.getElementById("chuathanhtoan");
+    if (thanhtoan == 1) {
+        dathanhtoan.selected = true;
+    } else if (thanhtoan == 2) {
+        chuathanhtoan.selected = true;
+    }
+</script>

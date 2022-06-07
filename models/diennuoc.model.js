@@ -9,15 +9,15 @@ const dienNuocSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'DichVu'
     },
-    tungay: 'Date',
-    denngay: 'Date',
+    tungay: 'String',
+    denngay: 'String',
     chisodiencu: 'Number',
     chisodienmoi: 'Number',
     chisonuoccu: 'Number',
     chisonuocmoi: 'Number',
     dongiadien: 'String',
     dongianuoc: 'String',
-    dathanhtoan: 'Number',
+    dathanhtoan: 'String',
 });
 const DienNuoc = mongoose.model('DienNuoc', dienNuocSchema);
 module.exports = DienNuoc;

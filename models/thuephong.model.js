@@ -11,8 +11,8 @@ const thuePhongSchema = mongoose.Schema({
     },
     giaphong: 'Number',
     tiendatcoc: 'Number',
-    ngaythue: 'Date',
-    ngaytra: 'Date',
+    ngaythue: 'String',
+    ngaytra: 'String',
     tienthanhtoan: 'Number'
 });
 const ThuePhong = mongoose.model('ThuePhong', thuePhongSchema);
